@@ -38,7 +38,7 @@ function malta_easyPdfMerge2(o, options) {
 		try {
 			epm(elements, o.name, function(err) {
 				if (err == null) {
-					msg = 'plugin ' + path.basename(__filename) + ' wrote ' + o.name+ ' (' + self.getSize(o.name) + ')';
+					msg = 'plugin ' + path.basename(path.dirname(__filename)).white() + ' wrote ' + o.name+ ' (' + self.getSize(o.name) + ')';
 				} else {
 					console.log('[ERROR] easy-pdf-merge says:');
 					console.dir(err);
