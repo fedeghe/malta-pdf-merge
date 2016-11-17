@@ -1,6 +1,6 @@
 {
   "name": "malta-pdf-merge",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Malta plugin to merge two or more pdf files",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

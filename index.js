@@ -12,7 +12,13 @@ function malta_easyPdfMerge2(o, options) {
 		elements = [],
 		sourceDir = path.dirname(o.name),
 		destDir = path.dirname(self.tplPath),
-		old = o.name;
+		old = o.name,
+        pluginName = path.basename(path.dirname(__filename)),
+		doErr = function (e) {
+			console.log(('[ERROR on ' + o.name + ' using ' + pluginName + '] :').red());
+			console.dir(e);
+			self.stop();
+		};
 
 	elements = o.content.match(/\#\#([^\#\s]*)\#\#/gm);
 
@@ -35,26 +41,14 @@ function malta_easyPdfMerge2(o, options) {
 	o.name = (sourceDir + '/' + options.name) || o.name.replace(/\.pdf$/, '.merged.pdf');
 
 	return function (solve, reject){
-		try {
-			epm(elements, o.name, function(err) {
-				if (err == null) {
-					msg = 'plugin ' + path.basename(path.dirname(__filename)).white() + ' wrote ' + o.name+ ' (' + self.getSize(o.name) + ')';
-				} else {
-					console.log('[ERROR] easy-pdf-merge says:');
-					console.dir(err);
-					self.stop();
-				}
-				//unlink original malta output primary file
-				fs.unlink(old);
-
-				solve(o);
-				self.notifyAndUnlock(start, msg);
-				
-			});
-		} catch (err) {
-			console.log('[PARSE ERROR: ' + o.name + '] ' + err.message + ' @' + err.line);
-			self.stop();
-		}
+		epm(elements, o.name, function(err) {
+			err && doErr(err);
+			msg = 'plugin ' + pluginName.white() + ' wrote ' + o.name+ ' (' + self.getSize(o.name) + ')';
+			//unlink original malta output primary file
+			fs.unlink(old);
+			solve(o);
+			self.notifyAndUnlock(start, msg);
+		});
 	};	
 }
 malta_easyPdfMerge2.ext = 'txt';
