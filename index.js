@@ -13,18 +13,12 @@ function malta_easyPdfMerge2(o, options) {
 		sourceDir = path.dirname(o.name),
 		destDir = path.dirname(self.tplPath),
 		old = o.name,
-        pluginName = path.basename(path.dirname(__filename)),
-		doErr = function (e) {
-			console.log(('[ERROR on ' + o.name + ' using ' + pluginName + '] :').red());
-			console.dir(e);
-			self.stop();
-		};
+        pluginName = path.basename(path.dirname(__filename));
 
 	elements = o.content.match(/\#\#([^\#\s]*)\#\#/gm);
 
 	elements = elements.map(function (el, i) {
 		// add right directory and cleanup regex results
-		//
 		return destDir + '/' + el.replace(/\#/g, '');
 	});
 
@@ -42,7 +36,7 @@ function malta_easyPdfMerge2(o, options) {
 
 	return function (solve, reject){
 		epm(elements, o.name, function(err) {
-			err && doErr(err);
+			err && self.doErr(err, o, pluginName);
 			msg = 'plugin ' + pluginName.white() + ' wrote ' + o.name+ ' (' + self.getSize(o.name) + ')';
 			//unlink original malta output primary file
 			fs.unlink(old);
