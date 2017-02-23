@@ -1,6 +1,6 @@
 {
   "name": "malta-pdf-merge",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Malta plugin to merge two or more pdf files",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,13 +16,13 @@
     "malta pdf merge plugin"
   ],
   "author": "Federico Ghedina <federico.ghedina@gmail.com>",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/fedeghe/malta-pdf-merge/issues"
   },
   "dependencies": {
     "easy-pdf-merge": "^0.1.3",
-    "malta": ">=3.0.0"
+    "malta": ">=3.4.0"
   },
   "main": "./index.js"
 }
