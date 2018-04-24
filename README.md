@@ -1,3 +1,10 @@
+---
+[![npm version](https://badge.fury.io/js/malta-pdf-merge.svg)](http://badge.fury.io/js/malta-pdf-merge)
+[![Dependencies](https://david-dm.org/fedeghe/malta-pdf-merge.svg)](https://david-dm.org/fedeghe/malta-pdf-merge)
+[![npm downloads](https://img.shields.io/npm/dt/malta-pdf-merge.svg)](https://npmjs.org/package/malta-pdf-merge)
+[![npm downloads](https://img.shields.io/npm/dm/malta-pdf-merge.svg)](https://npmjs.org/package/malta-pdf-merge)  
+---  
+
 This plugin can be used on all files  
 
 This plugin expects the template to contain some placeholders to know which file to look for, this placeholder is:  `##filepath##`  
