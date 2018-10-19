@@ -39,7 +39,7 @@ function malta_easyPdfMerge2(o, options) {
 			err && self.doErr(err, o, pluginName);
 			msg = 'plugin ' + pluginName.white() + ' wrote ' + o.name+ ' (' + self.getSize(o.name) + ')';
 			//unlink original malta output primary file
-			fs.unlink(old);
+			fs.unlink(old, () => {});
 			solve(o);
 			self.notifyAndUnlock(start, msg);
 		});
