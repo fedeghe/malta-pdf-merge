@@ -21,8 +21,8 @@
         "url": "https://github.com/fedeghe/malta-pdf-merge/issues"
     },
     "dependencies": {
-        "easy-pdf-merge": "^0.1.3",
-        "malta": "4.0.4"
+        "easy-pdf-merge": "^0.2.2",
+        "malta": "4.1.3"
     },
     "main": "./index.js"
 }
